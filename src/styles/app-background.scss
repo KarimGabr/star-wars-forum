@@ -1,0 +1,94 @@
+@function randomNum($min, $max) {
+  $rand: random();
+  $randomNum: $min + floor($rand * (($max - $min) + 1));
+
+  @return $randomNum;
+}
+
+@mixin stars-generation($num, $max_range) {
+  $box_shadow: #{" "};
+  @for $i from 0 to $num {
+    $box_shadow: $box_shadow +
+      randomNum(1, $max_range) +
+      px +
+      " " +
+      randomNum(1, $max_range) +
+      px +
+      " " +
+      #fff;
+
+    @if $i < $num - 1 {
+      $box_shadow: $box_shadow + ",";
+    }
+  }
+  box-shadow: $box_shadow;
+}
+
+#stars {
+  position: absolute;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  animation: stars-animation 50s linear infinite;
+  @include stars-generation(700, 2000);
+}
+
+#stars:after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  @include stars-generation(700, 2000);
+}
+
+#stars2 {
+  position: absolute;
+  z-index: -2;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  animation: stars-animation 100s linear infinite;
+  @include stars-generation(200, 2000);
+}
+
+#stars2:after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  @include stars-generation(200, 2000);
+}
+
+#stars3 {
+  position: absolute;
+  z-index: -3;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  animation: stars-animation 150s linear infinite;
+  @include stars-generation(100, 2000);
+}
+
+#stars3:after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  @include stars-generation(100, 2000);
+}
+
+// @keyframes stars-animation {
+//   from {
+//     transform: translateY(0px);
+//   }
+//   to {
+//     transform: translateY(-2000px);
+//   }
+// }

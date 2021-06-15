@@ -1,0 +1,69 @@
+@import "../../styles/templates.scss";
+@import "../../styles/color-palette.scss";
+
+.posts {
+  .posts-container,
+  .single-post-container {
+    .post-container {
+      cursor: pointer;
+      border: 1px solid var(--theme-color-1);
+      box-shadow: 0px 0px 6px 1px var(--theme-color-1);
+      border-radius: 4px;
+      margin: 3rem 0;
+      padding: 1rem;
+      color: var(--theme-color-text);
+      transition: 0.5s;
+
+      &:hover {
+        border: 1px solid var(--theme-color-4);
+        box-shadow: 0px 0px 6px 1px var(--theme-color-4);
+      }
+
+      img {
+        width: 30px;
+        height: auto;
+      }
+
+      .post-body {
+        margin-bottom: 1rem;
+
+        &.long-content {
+          @include mask_long_content();
+        }
+      }
+
+      .voting-container {
+        i {
+          color: var(--theme-color-4);
+          font-size: 1.75rem;
+        }
+
+        .votes-count {
+          color: var(--theme-color-4);
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .single-post-container {
+    img {
+      width: 30px;
+      height: auto;
+    }
+
+    .comments-container {
+      padding: 1.5rem 0;
+
+      .comment-container {
+        margin-top: 1rem;
+        color: var(--theme-color-text);
+      }
+    }
+  }
+
+  .commenter {
+    color: var(--theme-color-2);
+    margin-bottom: 1rem;
+  }
+}

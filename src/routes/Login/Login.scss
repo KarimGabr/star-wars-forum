@@ -1,0 +1,115 @@
+@import "../../styles/color-palette.scss";
+@import "../../styles/templates.scss";
+
+.login {
+  @include flex_display(row);
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 0 10rem !important;
+
+  .login-header {
+    width: 53%;
+    text-align: center;
+
+    .big {
+      color: $banana_yellow;
+      font-size: 11rem;
+      height: 220px;
+      font-family: "StarJediHollow";
+    }
+
+    .small {
+      color: white;
+      font-family: "ITCSerifGothicBold";
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 9px;
+    }
+  }
+
+  .login-dialog-container {
+    @include flex_display(column);
+    height: 485px;
+    width: 615px;
+    padding: 3rem;
+    color: #666666;
+    border-radius: 4px;
+    text-align: right;
+    border: 2px solid $banana_yellow;
+
+    .input-group {
+      display: flex;
+      flex-direction: row;
+
+      input {
+        padding: 10px;
+        width: 400px;
+      }
+    }
+
+    .login-title {
+      font-size: 2.5rem;
+      color: white;
+      font-family: "ITCSerifGothicBold";
+      font-weight: bold;
+    }
+
+    .login-error {
+      font-size: 20px;
+      color: var(--theme-color-1);
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 2.3rem;
+
+      input,
+      input::-webkit-input-placeholder {
+        font-size: 30px;
+        padding-top: 3px;
+        height: 72px;
+      }
+
+      .login-input-error {
+        font-size: 20px;
+        color: var(--theme-color-1);
+        font-weight: bold;
+        margin-top: 0.5rem;
+      }
+    }
+
+    .input-group-addon {
+      @include flex_display(row);
+      width: 72px;
+      justify-content: center;
+      align-items: center;
+      background: $banana_yellow;
+    }
+
+    .input-addon-icon {
+      padding: 10px;
+      height: 60px;
+    }
+
+    .form-control:focus {
+      @include form_outline();
+    }
+
+    .submit-btn-container {
+      @include flex_display(row);
+      justify-content: flex-end;
+    }
+
+    .btn-login {
+      height: 60px;
+      width: 213px;
+      font-family: "ITCSerifGothicBold";
+      font-size: 25px;
+      bottom: 10%;
+      border-radius: 0.5rem;
+    }
+  }
+}

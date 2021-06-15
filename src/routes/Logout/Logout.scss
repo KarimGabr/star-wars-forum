@@ -1,0 +1,18 @@
+@import "../../styles/templates.scss";
+
+.logout {
+  @include flex_display(column);
+  width: 100%;
+
+  span {
+    padding-top: 12px;
+    width: 754px;
+    height: 104px;
+    background-color: rgba($color: var(--theme-color-2), $alpha: 0.28);
+    color: var(--theme-color-2);
+    font-family: "Helvetica";
+    border-radius: 12px;
+    text-align: center;
+    font-size: 2rem;
+  }
+}
