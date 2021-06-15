@@ -7,6 +7,7 @@ export default function useDoc({ path = "", formHandler = null }) {
 
   const [doc, setDoc] = useState(null);
   const [isDeleted, setIsDeleted] = useState(false);
+  const [isDummy, setIsDummy] = useState(false);
 
   const updateDoc = (res) => {
     setDoc(res.data);
@@ -21,8 +22,15 @@ export default function useDoc({ path = "", formHandler = null }) {
     if (path && formHandler.state.selected_object?.id) {
       getDocAPI(path, formHandler.state.selected_object.id)
         .then((res) => {
-          setDoc(res.data);
-          setIsDeleted(false);
+          if (Object.keys(res.data).length > 0) {
+            setDoc(res.data);
+            setIsDummy(false);
+            setIsDeleted(false);
+          } else {
+            setIsDummy(true);
+            setDoc(null);
+            setIsDeleted(false);
+          }
         })
         .catch((error) => {
           addToasts([
@@ -36,9 +44,13 @@ export default function useDoc({ path = "", formHandler = null }) {
   }, [path, formHandler.state.selected_object?.id]);
 
   useEffect(() => {
-    if (formHandler.state.selected_object) {
+    if (
+      formHandler.state.selected_object &&
+      formHandler.state.api_method === "PUT"
+    ) {
       setDoc({ ...doc, ...formHandler.state.selected_object });
       setIsDeleted(false);
+      setIsDummy(false);
     }
   }, [formHandler.state.refreshVar]);
 
@@ -47,6 +59,7 @@ export default function useDoc({ path = "", formHandler = null }) {
     if (!formHandler.state.selected_object) {
       setDoc(null);
       setIsDeleted(false);
+      setIsDummy(false);
     }
   }, [formHandler.state.selected_object]);
 
@@ -55,6 +68,7 @@ export default function useDoc({ path = "", formHandler = null }) {
     updateDoc,
     deleteDoc,
     isDeleted,
+    isDummy,
   };
 
   return document;

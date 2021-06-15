@@ -116,7 +116,7 @@ export default function useAatroxForm({
         return {
           ...state,
           isSubmitting: false,
-          api_method: state.selected_object ? "PUT" : null,
+          api_method: state.api_method === "PUT" ? "PUT" : null,
           selected_object: state.selected_object ? state.selected_object : null,
           create_modal_state: false,
           refreshVar: state.refreshVar + 1,

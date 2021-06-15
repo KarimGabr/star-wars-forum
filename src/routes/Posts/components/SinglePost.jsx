@@ -90,6 +90,11 @@ export default function SinglePost() {
           </h3>
           <img src={trash} alt="trash" style={{ width: "50px" }} />
         </div>
+      ) : postDocument.isDummy ? (
+        <div className="text-center mt-5" style={{ color: "#ffe81f" }}>
+          This was a dummy post, if you want to edit/comment select a static
+          post, since there is a mock fetch api to get post comments
+        </div>
       ) : null}
     </div>
   );
